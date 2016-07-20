@@ -32,10 +32,9 @@ public class PhoneBook extends JFrame {
 		JPanel buttonPanel = new ButtonPanel();
 		bookSize = s;
 		this.add(buttonPanel);
-		this.add(tablePanel);
+		//this.add(tablePanel);
 		this.setSize(getMaximumSize());
-		tablePanel.setVisible(true);
-		//buttonPanel.setVisible(true);
+		
 		this.pack();
 		this.setVisible(true);
 	}

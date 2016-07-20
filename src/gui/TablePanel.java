@@ -21,7 +21,7 @@ public class TablePanel extends JPanel{
 	private static java.sql.Statement stment;
 	public TablePanel() throws SQLException, ClassNotFoundException{
 		
-		DBTable table = new DBTable();
+		quick.dbtable.DBTable table = new quick.dbtable.DBTable();
 		
 		table.setJdbcUrl("jdbc:ucanaccess://PhoneBook.accdb");
 		table.setSelectSql("SELECT * FROM Book");
