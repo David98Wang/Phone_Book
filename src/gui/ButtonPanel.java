@@ -8,38 +8,33 @@ import java.util.EventListener;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
+import net.miginfocom.swing.MigLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 public class ButtonPanel extends JPanel{
 	public ButtonPanel() {
-		this.setSize(120,123);
+		this.setSize(90,123);
 		/*******************************************/
 		JButton btnNew,btnSave,btnNextPage,btnPrevPage,btnSaveAs,btnOpen;
-		
-		btnNew = new JButton("New");
+		setLayout(new MigLayout("", "[120px]", "[23px][23px][23px][12px]"));
+		btnSave = new JButton("Save");
+		this.add(btnSave, "cell 0 2,alignx center,aligny top");
+		btnSave.setVisible(true);
 		//btnNextPage = new JButton("Next Page");
 		//btnPrevPage = new JButton("Previous Page");
 		btnSaveAs = new JButton("Save As");
-		
-		btnNew.setSize(100,200);
-		btnSaveAs.setSize(100,200);
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		this.add(btnNew);
+		this.add(btnSaveAs, "cell 0 1,alignx center,aligny top");
+		btnSaveAs.setVisible(true);
 		btnOpen = new JButton("Open");
-		//btnNextPage.setSize(100,200);
-		//btnPrevPage.setSize(100,200);
-		btnOpen.setSize(100,200);
-		this.add(btnOpen);
+		this.add(btnOpen, "cell 0 0,alignx center,aligny top");
 		//btnNextPage.setVisible(true);
 		//btnPrevPage.setVisible(true);
 		btnOpen.setVisible(true);
-		//this.add(btnNextPage);
-		//this.add(btnPrevPage);
-		this.add(btnSaveAs);
-		btnSave = new JButton("Save");
-		btnSave.setSize(100,200);
-		this.add(btnSave);
-		btnSave.setVisible(true);
+		
+		btnNew = new JButton("New");
+		this.add(btnNew, "cell 0 3,grow");
 		
 		btnNew.addActionListener(new ActionListener() {
 			@Override
@@ -51,7 +46,6 @@ public class ButtonPanel extends JPanel{
 		
 		
 		btnNew.setVisible(true);
-		btnSaveAs.setVisible(true);
 		System.out.println("ADDED");
 	}
 }

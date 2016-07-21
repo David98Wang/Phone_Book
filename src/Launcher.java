@@ -19,11 +19,11 @@ public class Launcher {
     public static java.sql.Statement stment;
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		conn = DriverManager.getConnection("jdbc:ucanaccess://PhoneBook.accdb");
-		stment = conn.createStatement();
-        ResultSet iniSize = stment.executeQuery(initializeSize);
-        while(iniSize.next())
-        	contactSize = iniSize.getInt("total");
+		//conn = DriverManager.getConnection("jdbc:ucanaccess:PhoneBook.accdb");
+		//stment = conn.createStatement();
+        //ResultSet iniSize = stment.executeQuery(initializeSize);
+//        while(iniSize.next())
+//        	contactSize = iniSize.getInt("total");
         //get size of contact group
         //System.out.println(contactSize);
 		JFrame j = new PhoneBook(contactSize,conn);
@@ -45,7 +45,7 @@ public class Launcher {
 		        } 
 		    }
 		});
-		j.setSize(1000, 600);
+		//j.setSize(1000, 600);
 		j.setResizable(false);// not resizable
 		j.setVisible(true);// set as visible
 	}

@@ -19,6 +19,9 @@ import java.awt.GridLayout;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
+import net.miginfocom.swing.MigLayout;
 
 public class PhoneBook extends JFrame {
 	static int bookSize;
@@ -27,15 +30,28 @@ public class PhoneBook extends JFrame {
     }
 	public PhoneBook(int s,Connection c) throws SQLException, ClassNotFoundException{
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.setLayout(new GridLayout());
-		JPanel tablePanel = new TablePanel();
-		JPanel buttonPanel = new ButtonPanel();
 		bookSize = s;
-		this.add(buttonPanel);
-		//this.add(tablePanel);
-		this.setSize(getMaximumSize());
+		getContentPane().setLayout(new MigLayout("", "[1px][452px][][][]", "[427px]"));
+		JPanel buttonPanel = new ButtonPanel();
+		getContentPane().add(buttonPanel, "cell 0 0,alignx left,aligny center");
+		buttonPanel.setLayout(null);
+		//JPanel tablePanel = new TablePanel();
+		//getContentPane().add(tablePanel, "cell 28 0 1 18,alignx left,aligny top");
+		this.setSize(new Dimension(1000, 600));
 		
-		this.pack();
+		quick.dbtable.DBTable table = new quick.dbtable.DBTable();
+		
+		table.setJdbcUrl("jdbc:ucanaccess://PhoneBook.accdb");
+		table.setSelectSql("SELECT * FROM Book");
+		table.setControlPanelVisible(false);
+		
+		table.connectDatabase();
+		table.refresh();
+		
+		//table.
+		getContentPane().add(table, "cell 4 0,alignx left,aligny top");
+		
+		//this.pack();
 		this.setVisible(true);
 	}
 }
